@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Mysql数据库和Oracle数据库的区别！ | 尼采的Blog</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://ncgzs6.github.io/favicon.ico?v=1630161675726">
+<link rel="stylesheet" href="https://ncgzs6.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="(1) 对事务的提交
+MySQL默认采用InnoDB存储引擎，所以支持事务，默认是自动提交
+Oracle默认不自动提交，需要用户手动提交，需要在写commit;指令或者点击commit按钮
+(2) 分页查询
+MySQL是直接在SQL语句中写..." />
+    <meta name="keywords" content="面试题" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://ncgzs6.github.io">
+        <img src="https://ncgzs6.github.io/images/avatar.png?v=1630161675726" class="site-logo">
+        <h1 class="site-title">尼采的Blog</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+        
+          <a href="ncgzs.top" class="site-nav">
+            购物领券
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      一个程序员的成长历程记录！
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://ncgzs6.github.io" target="_blank">NCGZS</a> | <a class="rss" href="https://ncgzs6.github.io/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Mysql数据库和Oracle数据库的区别！</h2>
+            <div class="post-date">2021-08-20</div>
+            
+            <div class="post-content" v-pre>
+              <p>(1) 对事务的提交<br>
+MySQL默认采用InnoDB存储引擎，所以支持事务，默认是自动提交<br>
+Oracle默认不自动提交，需要用户手动提交，需要在写commit;指令或者点击commit按钮<br>
+(2) 分页查询<br>
+MySQL是直接在SQL语句中写limit  x, y，用limit就可以实现分页<br>
+Oracle则是需要用到伪列ROWNUM和嵌套查询<br>
+(3) 事务隔离级别<br>
+MySQL有4中隔离级别：读未提交，读已提交，可重复读，串行化<br>
+Oracle只有2中隔离级别：读已提交、串行化<br>
+MySQL默认的隔离级别是可重复读，而Oracle默认的隔离级别是读已提交，同时二者都支持serializable串行化事务隔离级别，可以实现最高级别的读一致性。每个session提交后其他session才能看到提交的更改。<br>
+(4) 对事务的支持<br>
+MySQL在innodb存储引擎的行级锁的情况下才可支持事务，而Oracle则完全支持事务<br>
+(5) 保存数据的持久性<br>
+MySQL是在数据库更新或者重启，则会丢失数据，Oracle把提交的sql操作线写入了在线联机日志文件中，保持到了磁盘上，可以随时恢复<br>
+(6) 并发性<br>
+MySQL以表级锁为主，对资源锁定的粒度很大，如果一个session对一个表加锁时间过长，会让其他session无法更新此表中的数据。虽然InnoDB引擎的表可以用行级锁，但这个行级锁的机制依赖于表的索引，如果表没有索引，或者sql语句没有使用索引，那么仍然使用表级锁。<br>
+Oracle使用行级锁，对资源锁定的粒度要小很多，只是锁定sql需要的资源，并且加锁是在数据库中的数据行上，不依赖与索引。所以Oracle对并发性的支持要好很多。<br>
+(7) 逻辑备份<br>
+MySQL逻辑备份时要锁定数据，才能保证备份的数据是一致的，影响业务正常的dml使用,Oracle逻辑备份时不锁定数据，且备份的数据是一致<br>
+(8) 复制<br>
+MySQL复制服务器配置简单，但主库出问题时，丛库有可能丢失一定的数据。且需要手工切换丛库到主库。<br>
+Oracle:既有推或拉式的传统数据复制，也有dataguard的双机或多机容灾机制，主库出现问题是，可以自动切换备库到主库，但配置管理较复杂。<br>
+(9) 性能诊断<br>
+MySQL的诊断调优方法较少，主要有慢查询日志。（现在的手段工具也挺多了）<br>
+Oracle有各种成熟的性能诊断调优工具，能实现很多自动分析、诊断功能。比如awr、addm、sqltrace、tkproof等<br>
+(10)权限与安全<br>
+MySQL的用户与主机有关，感觉没有什么意义，另外更容易被仿冒主机及ip有可乘之机。<br>
+Oracle的权限与安全概念比较传统，中规中矩。<br>
+(11)分区表和分区索引<br>
+MySQL的分区表还不太成熟稳定。<br>
+Oracle的分区表和分区索引功能很成熟，可以提高用户访问db的体验。<br>
+(12)管理工具<br>
+MySQL管理工具较少，在linux下的管理工具的安装有时要安装额外的包（phpmyadmin， etc)，有一定复杂性。<br>
+Oracle有多种成熟的命令行、图形界面、web管理工具，还有很多第三方的管理工具，管理极其方便高效。<br>
+(13)最重要的区别<br>
+MySQL是轻量型数据库，并且免费，没有服务恢复数据，并且开源<br>
+Oracle是重量型数据库，收费，Oracle公司对Oracle数据库有任何服务。</p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://ncgzs6.github.io/tag/B5yAZ9SRo/" class="tag">
+                    面试题
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://ncgzs6.github.io/post/hello-gridea/">
+                  <h3 class="post-title">
+                    Hello Gridea
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '',
+        clientSecret: '',
+        repo: '',
+        owner: '',
+        admin: [''],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>
