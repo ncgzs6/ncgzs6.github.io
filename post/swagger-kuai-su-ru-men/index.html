@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://ncgzs6.github.io/favicon.ico?v=1630222680889">
+<link rel="shortcut icon" href="https://ncgzs6.github.io/favicon.ico?v=1630223328186">
 <link rel="stylesheet" href="https://ncgzs6.github.io/styles/main.css">
 
 
@@ -35,7 +35,7 @@ Swagger是一个简单但功能强大的API表达工具。它具有地球上最�
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://ncgzs6.github.io">
-        <img src="https://ncgzs6.github.io/images/avatar.png?v=1630222680889" class="site-logo">
+        <img src="https://ncgzs6.github.io/images/avatar.png?v=1630223328186" class="site-logo">
         <h1 class="site-title">尼采的Blog</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -109,41 +109,39 @@ Swagger是一个简单但功能强大的API表达工具。它具有地球上最�
             <div class="post-content" v-pre>
               <p><strong>swagger介绍：</strong><br>
 Swagger是一个简单但功能强大的API表达工具。它具有地球上最大的API工具生态系统，数以千计的开发人员，使用几乎所有的现代编程语言，都在支持和使用Swagger。使用Swagger生成API，我们可以得到交互式文档，自动生成代码的SDK以及API的发现特性等。</p>
-<p><strong>官网：</strong></p>
-<p>https://swagger.io/</p>
-<p>在线编辑器：</p>
-<p>http://editor.swagger.io/</p>
-<p>Swagger整合SpringBoot(单系统)：</p>
-<p>第三方(推荐)</p>
-<p>https://github.com/SpringForAll/spring-boot-starter-swagger</p>
-<p>依赖注入：</p>
-<pre><code>&lt;dependency&gt;
-    &lt;groupId&gt;com.spring4all&lt;/groupId&gt;
-    &lt;artifactId&gt;swagger-spring-boot-starter&lt;/artifactId&gt;
-    &lt;version&gt;1.9.0.RELEASE&lt;/version&gt;
-&lt;/dependency&gt;
-</code></pre>
+<p><strong>官网：</strong><br>
+https://swagger.io/</p>
+<p><strong>在线编辑器：</strong><br>
+http://editor.swagger.io/</p>
+<p><strong>Swagger整合SpringBoot(单系统)：</strong><br>
+第三方(推荐)<br>
+https://github.com/SpringForAll/spring-boot-starter-swagger</p>
+<p>依赖注入：<br>
+<dependency><br>
+<groupId>com.spring4all</groupId><br>
+<artifactId>swagger-spring-boot-starter</artifactId><br>
+<version>1.9.0.RELEASE</version><br>
+</dependency></p>
 <p>在SpringBoot 启动类application 里面加入 @EnableSwagger2Doc 注解<br>
-<img src="https://raw.githubusercontent.com/ncgzs6/PicGo/master/20210829150107.png" alt="" loading="lazy"></p>
-<p>加完注解后把项目启动起来，先看看效果 。访问路径默认都是localhost:端口号/swagger-ui.html</p>
-<p>效果如图下：<br>
-<img src="https://raw.githubusercontent.com/ncgzs6/PicGo/master/20210829150147.png" alt="enter image description here" loading="lazy"><br>
-他是会自动去扫描项目下的所有接口，这是项目里面自带的一些乱七八糟的，也不用去看这些。</p>
-<p>我们可以在application.properties 文件中设置一些参数(这些都是最基本的，更多参数请参考官方文档)</p>
-<pre><code>#swagger标题
-swagger.title=swagger titile
-#swagger描述
-swagger.description=swagger context
-#swagger版本号
-swagger.version=1.0.0
-</code></pre>
+<img src="https://ncgzs6.github.io/post-images/1630222960007.png" alt="" loading="lazy"></p>
+<p>加完注解后把项目启动起来，先看看效果 。访问路径默认都是localhost:端口号/swagger-ui.html<br>
+效果如图下：<br>
+<img src="https://ncgzs6.github.io/post-images/1630222991386.png" alt="" loading="lazy"></p>
+<p>他是会自动去扫描项目下的所有接口，这是项目里面自带的一些乱七八糟的，也不用去看这些。<br>
+我们可以在application.properties 文件中设置一些参数(这些都是最基本的，更多参数请参考官方文档)<br>
+#swagger标题<br>
+swagger.title=swagger titile<br>
+#swagger描述<br>
+swagger.description=swagger context<br>
+#swagger版本号<br>
+swagger.version=1.0.0</p>
 <p>接下来，看运行效果，如图：<br>
-<img src="https://raw.githubusercontent.com/ncgzs6/PicGo/master/20210408140930780.png" alt="enter image description here" loading="lazy"><br>
-我们可以自己指定扫描路径，并为我们自己写的接口添加注释</p>
-<p>创建一个接口类 MainController</p>
+<img src="https://ncgzs6.github.io/post-images/1630223031689.png" alt="" loading="lazy"></p>
+<p>我们可以自己指定扫描路径，并为我们自己写的接口添加注释<br>
+创建一个接口类 MainController</p>
 <p>@Api   //SwaggerApi注解 作用于接口类上<br>
-@ApiOperation   //SwaggerApi注解 作用于某个接口</p>
-<p>@ApiParam //Swagger注解,作用于接口里面的参数</p>
+@ApiOperation   //SwaggerApi注解 作用于某个接口<br>
+@ApiParam //Swagger注解,作用于接口里面的参数</p>
 <pre><code>/**
  * @Auther: nc
  * @Date: 2021/8/29 15:05
@@ -175,17 +173,17 @@ public class MainController {
     }
 }
 </code></pre>
-<p>Swagger 会自动扫描项目下所有接口，会把一些不需要展示的接口显示出来，我们就可以指定Swagger的扫描路径</p>
-<p>在application.properties 配置文件中</p>
-<pre><code>#指定分组名称
-swagger.docket.maincontroller.title=main-controller
-#指定当前分组扫描的路径-这个路径就是我创建的那个MainController的路径，你们自行修改
-swagger.docket.maincontroller.base-package=com.wan.eurekaserver2.controller
-</code></pre>
+<p>Swagger 会自动扫描项目下所有接口，会把一些不需要展示的接口显示出来，我们就可以指定Swagger的扫描路径<br>
+在application.properties 配置文件中<br>
+#指定分组名称<br>
+swagger.docket.maincontroller.title=main-controller<br>
+#指定当前分组扫描的路径-这个路径就是我创建的那个MainController的路径，你们自行修改<br>
+swagger.docket.maincontroller.base-package=com.wan.eurekaserver2.controller</p>
 <p>运行，看效果，如下图：<br>
-<img src="https://raw.githubusercontent.com/ncgzs6/PicGo/master/20210829152226.png" alt="enter image description here" loading="lazy"><br>
-点击这个接口里面看看有啥，效果如下图：</p>
-<p>接下来，我们看看如果参数是Object 的时候，怎么在Swagger中配置参数说明</p>
+<img src="https://ncgzs6.github.io/post-images/1630223111896.png" alt="" loading="lazy"><br>
+点击这个接口里面看看有啥，效果如下图：<br>
+<img src="https://ncgzs6.github.io/post-images/1630223126232.png" alt="" loading="lazy"><br>
+接下来，我们看看如果参数是Object 的时候，怎么在Swagger中配置参数说明</p>
 <p>创建一个wanController ，把它和MainController 放在不同的文件夹下面，如下图：</p>
 <pre><code>/**
  * @Auther: nc
@@ -267,18 +265,17 @@ swagger.docket.wancontroller.base-package=com.wan.eurekaserver2.wanController
 </code></pre>
 <p>配置好了，运行。<br>
 效果如下图：<br>
-<img src="https://raw.githubusercontent.com/ncgzs6/PicGo/master/20210408144355766.png" alt="enter image description here" loading="lazy"><br>
+<img src="https://ncgzs6.github.io/post-images/1630223167856.png" alt="" loading="lazy"><br>
 看看第二个分组里面的接口:<br>
-<img src="https://raw.githubusercontent.com/ncgzs6/PicGo/master/2021040814445351.png" alt="enter image description here" loading="lazy"><br>
-<img src="https://raw.githubusercontent.com/ncgzs6/PicGo/master/20210408144555604.png" alt="enter image description here" loading="lazy"><br>
+<img src="https://ncgzs6.github.io/post-images/1630223197960.png" alt="" loading="lazy"><br>
+<img src="https://ncgzs6.github.io/post-images/1630223212448.png" alt="" loading="lazy"><br>
 在Swagger中 还自带postman 的功能，可以对接口进行发起请求，测试，操作如下图：<br>
-<img src="https://raw.githubusercontent.com/ncgzs6/PicGo/master/20210408144727491.png" alt="enter image description here" loading="lazy"><br>
+<img src="https://ncgzs6.github.io/post-images/1630223228541.png" alt="" loading="lazy"><br>
 出现如下页面：<br>
-<img src="https://raw.githubusercontent.com/ncgzs6/PicGo/master/20210408144941888.png" alt="enter image description here" loading="lazy"><br>
+<img src="https://ncgzs6.github.io/post-images/1630223246002.png" alt="" loading="lazy"><br>
 发起请求后返回的结果，如下图：<br>
-<img src="https://raw.githubusercontent.com/ncgzs6/PicGo/master/20210408145029432.png" alt="enter image description here" loading="lazy"><br>
-到此，Swagger 基本使用就是如此了。<br>
-<img src="https://ncgzs6.github.io/post-images/1630222625017.png" alt="" loading="lazy"></p>
+<img src="https://ncgzs6.github.io/post-images/1630223262350.png" alt="" loading="lazy"><br>
+到此，Swagger 基本使用就是如此了。</p>
 
             </div>
             
